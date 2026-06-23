@@ -212,10 +212,6 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
                 if ev == "start":
                     stream_sid = msg["start"]["streamSid"]
                     print(f"[TWILIO] Stream connected: {stream_sid}")
-                    # Kick off conversation with injected opening line
-                    await speech_queue.put(
-                        "Hello, thank you for calling. How can I help you today?"
-                    )
 
                 elif ev == "media":
                     if msg["media"].get("track") != "inbound":
