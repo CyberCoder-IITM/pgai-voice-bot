@@ -1,7 +1,5 @@
 .env
 __pycache__/
 *.pyc
-transcripts/
-recordings/
 *.egg-info/
 .DS_Store

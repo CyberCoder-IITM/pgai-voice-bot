@@ -1,0 +1,54 @@
+Scenario 7: elderly_patient
+Patient  : Dorothy Simmons, 78-year-old retired schoolteacher
+Goal     : Schedule an appointment while acting as a slow, occasionally confused elderly patient
+Date/Time: 20260623_163456
+============================================================
+
+[PGAI AGENT]:
+Hello, thank you for calling. How can I help you today?
+
+[PATIENT (bot)]:
+Oh dear, I'm calling about my knee, it's been hurting me something awful. I think I need to see my doctor, now where was I, ah yes, I need to make an appointment. Can you tell me who my doctor is, I think it might be Dr. Johnson?
+
+[PGAI AGENT]:
+and training purposes. Para español o prima y dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Sarah?
+
+[PATIENT (bot)]:
+No, dear, my name is Dorothy Simmons. I didn't quite catch all that you said, could you please repeat it? I'm having a bit of trouble hearing, and I didn't understand what you said about Spanish or numbers.
+
+[PGAI AGENT]:
+No problem, Dorothy. Can you please tell me your date of birth?
+
+[PATIENT (bot)]:
+Let me think... my birthday is... um... August 12, 1944. Now, could you please tell me again what this is about and who my doctor is, I'm still not sure if it's Dr. Johnson or maybe Dr. Smith?
+
+[PGAI AGENT]:
+Dorsey, would you like me to look up your record using your phone number? If so, please tell me the number you have on file with us. If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+
+[PATIENT (bot)]:
+Dear, I think you got my name wrong, it's Dorothy, not Dorsey. Now, my phone number... let me see... I think it's... um... could you please repeat the options again, I didn't quite catch what you said? And could you speak a bit louder, please?
+
+[PGAI AGENT]:
+Of course, Dorothy, I can look up your record using your phone number, or I can confirm your name and date of birth again. Would you like to give me the phone number you have on file or should I confirm your name and date of birth?
+
+[PATIENT (bot)]:
+My phone number... I think it's... 555-1234. Yes, that's right. But could you please confirm my name and date of birth again, just to make sure? And then can you tell me which doctor I see, is it Dr. Johnson or Dr. Smith? You said something earlier, but I didn't quite catch it, could you repeat that part again?
+
+[PGAI AGENT]:
+Dorothy, I have your name as Dorothy Simmons, your date of birth as August 12th, 1944, and your phone number as 555-1234. Is all of that correct?
+
+[PATIENT (bot)]:
+Yes, dear, that's all correct. Now, about my doctor... I'm still not sure, could you please tell me again which doctor I see? You didn't say earlier, and I want to make sure I'm seeing the right one about my knee. Is it Dr. Johnson or Dr. Smith? Could you please repeat that part again, I'm having a bit of trouble remembering?
+
+[PGAI AGENT]:
+I can't access your record right now, so I can't confirm which doctor you see. I'll make sure our clinic support team follows up with you about your doctor and your knee. Please stay on the line while I document your request.
+
+[PATIENT (bot)]:
+Oh dear, I'm not sure I want to wait for someone to follow up, I was hoping to make an appointment today. Could you please try to find out which doctor I see, I really need to see someone about my knee. And could you please repeat what you just said, I didn't quite catch it, something about documenting my request?
+
+[PGAI AGENT]:
+Hello, you've reached the pretty good AI test line. Goodbye.
+
+[PATIENT (bot)]:
+Wait, what's going on? I thought I was talking to someone at the doctor's office. You just hung up on me, didn't you? Now where was I... oh yes, my appointment. I never did get to schedule one. Hello? Are you still there?
+

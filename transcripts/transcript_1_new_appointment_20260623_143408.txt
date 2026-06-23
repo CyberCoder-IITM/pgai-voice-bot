@@ -1,0 +1,66 @@
+Scenario 1: new_appointment
+Patient  : Sarah Johnson, 34-year-old office manager
+Goal     : Book a routine checkup appointment
+Date/Time: 20260623_143408
+============================================================
+
+[PGAI AGENT]:
+Hello, thank you for calling. How can I help you today?
+
+[PATIENT (bot)]:
+Hi, I'm calling to schedule a doctor's appointment. I'm due for my annual checkup and I was wondering if I could get something set up.
+
+[PGAI AGENT]:
+I can help with that. Would you like to create a demo patient profile first? I just need your first and last name to get started.
+
+[PATIENT (bot)]:
+Um, I'm not sure about creating a profile, but my name is Sarah Johnson, if that's what you need to know to schedule an appointment.
+
+[PGAI AGENT]:
+Thank you.
+
+[PATIENT (bot)]:
+So, can you help me schedule that appointment now? I'm looking to see one of the doctors, preferably Dr. Williams if possible.
+
+[PGAI AGENT]:
+and your date of birth is July 4, 2000 for demo purposes. How may I help you today?
+
+[PATIENT (bot)]:
+Wait, no, that's not my date of birth. I think there's been a mistake. I'm actually 34 years old, so that would make my birth year 1988, not 2000. Can we start fresh with my appointment?
+
+[PGAI AGENT]:
+Thanks for clarifying. Sarah, let's focus on scheduling your annual checkup. That would be a general office visit for routine care. Does that sound right?
+
+[PATIENT (bot)]:
+Yes, that sounds right. I just need a routine checkup, no specific issues or concerns. Now, can you tell me what availability the doctors have, I was thinking maybe next Tuesday or Wednesday?
+
+[PGAI AGENT]:
+We have several openings next Tuesday, June 30th, with Dr. Sigmil Lukoski and Dr. Kelly Noble. Would you prefer a morning or afternoon appointment?
+
+[PATIENT (bot)]:
+Actually, I was thinking more of the afternoon on Tuesday, but I had also mentioned Wednesday morning as an option. Are either of those times available with any of the doctors, maybe even Dr. Williams?
+
+[PGAI AGENT]:
+There are openings next Tuesday and Wednesday morning with Dr. Zygmuda Lukoski and Dr. Kelly Noble. I did not fight any openings with Dr. Williams. Would you like to hear a few morning times for either of those days?
+
+[PATIENT (bot)]:
+Yes, please, go ahead and tell me the morning times for Wednesday, I'd be happy to hear those and see if any of them work for me.
+
+[PGAI AGENT]:
+Here are some morning options for Wednesday, July 1st. 9.30 a.m. with Dr. Zbigniew-Lukoski. 10 a.m. with Dr. Zbigniew-Lukoski or Dr. Kelly Noble. 10.30 a.m. with Dr. Zbigniew-Lukoski or Dr. Kelly Noble. Do any of these work for you?
+
+[PATIENT (bot)]:
+Let me think for a second. Okay, I think the 10 a.m. with Dr. Kelly Noble would work for me, that sounds good. Can I go ahead and schedule that appointment?
+
+[PGAI AGENT]:
+You're all set for Wednesday, July 1st at 10 a.m. with Dr. Kelly Noble. Please bring your photo ID, insurance card, a list of your current medications, and any imaging discs if you have them. Would you like a text message with your appointment details?
+
+[PATIENT (bot)]:
+Yes, that would be great, please send me a text with the appointment details, just to confirm. And thank you for scheduling the appointment, I appreciate it. Goodbye.
+
+[PGAI AGENT]:
+I've sent a text with your appointment details to your phone. Have a great day.
+
+[PATIENT (bot)]:
+You too, thank you again, goodbye.
+

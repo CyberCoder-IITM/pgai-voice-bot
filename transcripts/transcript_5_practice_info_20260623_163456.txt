@@ -1,0 +1,72 @@
+Scenario 5: practice_info
+Patient  : Emma Wilson, 45-year-old marketing executive, new to the area
+Goal     : Gather information before deciding to register as a new patient
+Date/Time: 20260623_163456
+============================================================
+
+[PGAI AGENT]:
+Hello, thank you for calling. How can I help you today?
+
+[PATIENT (bot)]:
+Hi, I'm just calling to get some information about your practice, I'm new to the area and I'm looking for a new doctor, can you tell me what your office hours are?
+
+[PGAI AGENT]:
+quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics part of Pretty Good AI. Am I speaking with Sarah?
+
+[PATIENT (bot)]:
+No, you didn't tell me your name, you just said this is Pivot Point Orthopedics, so I'm not sure who I'm speaking with, can you tell me who this is?
+
+[PGAI AGENT]:
+I'm the voice assistant for Pivot Point Orthopedics. I'm here to help with appointments, clinic questions, and more. How can I assist you today?
+
+[PATIENT (bot)]:
+Okay, that's great, um, so I'm just looking for some general information, you said you can help with clinic questions, so can you tell me what your office hours are, like what time do you guys open and close?
+
+[PGAI AGENT]:
+Pidot Point Orthopedics is open Monday, Tuesday, and Thursday from 9 a.m. to 4 p.m., Wednesday from 12 p.m. to 7 p.m., and Friday from 9 a.m. to 12 p.m. Let me know if you need anything else about the clinic.
+
+[PATIENT (bot)]:
+That helps, thanks, so now I'm wondering about insurance, do you guys accept Blue Cross Blue Shield PPO, I have that through my employer?
+
+[PGAI AGENT]:
+Yes, Pivot Point Orthopedics accepts most insurance plans, including Blue Cross Blue Shield PPS. If you want to update your insurance or have specific questions about coverage, I can help with that too.
+
+[PATIENT (bot)]:
+I think you said PPS, but I'm pretty sure my plan is PPO, is that okay, do you accept Blue Cross Blue Shield PPO, or is it just the PPS plan?
+
+[PGAI AGENT]:
+Yes, Blue Cross Blue Shield PPO plans are accepted at Pivot Point Orthopedics. You should be all set with your PPO coverage. If you want to confirm details for your specific plan or update your insurance on file, just let me know.
+
+[PATIENT (bot)]:
+That's a relief, thanks for clarifying, so now I'm wondering about appointments, how long does a typical new patient appointment take, and do you have any availability this week?
+
+[PGAI AGENT]:
+A typical new patient appointment with one of our doctors usually takes about 30 minutes. We do have openings this week. Would you like to schedule a morning or afternoon appointment?
+
+[PATIENT (bot)]:
+That's great, 30 minutes sounds pretty standard, um, let me think, I've got a pretty busy schedule, but I'd love to get in as soon as possible, what's the earliest availability you have this week, can I get in tomorrow or the next day?
+
+[PGAI AGENT]:
+I'll need to confirm a few details to check the earliest available appointments for you. May I get your name to get started with scheduling?
+
+[PATIENT (bot)]:
+My name is Emma Wilson, but actually, I'm not sure if I'm ready to schedule an appointment just yet, I just wanted to get some information, can I just get an idea of what the earliest availability is without actually booking it, just to see if it fits my schedule?
+
+[PGAI AGENT]:
+I understand. To check specific appointment openings, I'll need to verify a few details first, even if you're not ready to book. This helps me show you the most accurate times. Would you like to continue with that, or do you want a general idea of availability instead?
+
+[PATIENT (bot)]:
+Okay, that makes sense, I'd rather get a general idea of availability then, can you just tell me if you have any openings, like, in the next few days, without needing all my details, just to give me an idea?
+
+[PGAI AGENT]:
+Sure. We usually have new patient openings within a few days, including this week. If you decide to book, we can often get you in as soon as tomorrow or the next day. When you're ready, I can help you check exact times and schedule your visit.
+
+[PATIENT (bot)]:
+That sounds great, thanks for the info, I think I've got a good idea of what to expect, I'll probably go ahead and book an appointment soon, thanks for your help, I'll talk to you later, goodbye.
+
+[PGAI AGENT]:
+glad I could help. If you have more questions or want to book, just give us a call. Have a great day. Goodbye.
+
+[PATIENT (bot)]:
+You too, thanks again, goodbye.
+
