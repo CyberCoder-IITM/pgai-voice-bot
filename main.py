@@ -12,7 +12,7 @@ Flow:
   6. Patient response text goes to Deepgram TTS to generate voice audio
   7. Audio converted to mulaw format and sent back to Twilio
 """
-
+import aiohttp
 import asyncio
 import audioop
 import base64
@@ -44,10 +44,9 @@ TARGET_NUMBER = "+18054398008"
 
 DG_STT_URL = (
     "wss://api.deepgram.com/v1/listen"
-    f"?token={os.environ['DEEPGRAM_API_KEY']}"
-    "&encoding=mulaw&sample_rate=8000&channels=1"
+    "?encoding=mulaw&sample_rate=8000&channels=1"
     "&model=nova-2&punctuate=true"
-    "&utterance_end_ms=1200&vad_events=true"
+    "&utterance_end_ms=1200"
     "&interim_results=false"
 )
 
@@ -193,7 +192,7 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
 
                 elif ev == "media":
                     if msg["media"].get("track") == "inbound":
-                        await dg_ws.send(
+                        await dg_ws.send_bytes(
                             base64.b64decode(msg["media"]["payload"])
                         )
 
@@ -208,14 +207,16 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
     async def pipe_deepgram_to_queue(dg_ws):
         """Receive transcripts from Deepgram, put complete utterances in queue."""
         try:
-            async for raw in dg_ws:
-                msg   = json.loads(raw)
-                if msg.get("type") == "Results":
-                    alts  = msg.get("channel", {}).get("alternatives", [{}])
-                    text  = alts[0].get("transcript", "").strip() if alts else ""
-                    final = msg.get("speech_final", False)
-                    if text and final:
-                        await speech_queue.put(text)
+            async for msg in dg_ws:
+                if msg.type == aiohttp.WSMsgType.TEXT:
+                    data = json.loads(msg.data)
+                    if data.get("type") == "Results":
+                        alts  = data.get("channel", {}).get("alternatives", [{}])
+                        text  = alts[0].get("transcript", "").strip() if alts else ""
+                        final = data.get("speech_final", False)
+                        if text and final:
+                            await speech_queue.put(text)
+                    continue
 
         except Exception as e:
             print(f"[DEEPGRAM ERROR] {e}")
@@ -227,13 +228,15 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
             text = await speech_queue.get()
             await patient_respond(text)
 
+    dg_url_with_auth = f"{DG_STT_URL}&token={DEEPGRAM_KEY}"
     try:
-        async with websockets.connect(DG_STT_URL) as dg_ws:
-            await asyncio.gather(
-                pipe_twilio_to_deepgram(dg_ws),
-                pipe_deepgram_to_queue(dg_ws),
-                process_queue(),
-            )
+        async with aiohttp.ClientSession() as session:
+            async with session.ws_connect(dg_url_with_auth) as dg_ws:
+                await asyncio.gather(
+                    pipe_twilio_to_deepgram(dg_ws),
+                    pipe_deepgram_to_queue(dg_ws),
+                    process_queue(),
+                )
     except Exception as e:
         print(f"[SESSION ERROR] {e}")
     finally:
