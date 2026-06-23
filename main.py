@@ -1,18 +1,18 @@
 """
 Pretty Good AI -- Patient Voice Bot
 =====================================
-Stack: Twilio Media Streams -> Deepgram STT -> Groq LLM -> Deepgram TTS -> Twilio
+Stack: Twilio Media Streams -> AssemblyAI STT -> Groq LLM -> Deepgram TTS -> Twilio
 
 Flow:
   1. make_calls.py triggers outbound PSTN call via Twilio
   2. Twilio connects and opens audio stream to our WebSocket server
-  3. Inbound audio (PGAI agent speaking) forwarded to Deepgram STT
-  4. When agent finishes speaking, Deepgram fires speech_final=True
+  3. Inbound audio (PGAI agent speaking) forwarded to AssemblyAI STT
+  4. When agent finishes speaking, AssemblyAI fires a Turn event
   5. Transcript goes to Groq LLM acting as the patient persona
   6. Patient response text goes to Deepgram TTS to generate voice audio
   7. Audio converted to mulaw format and sent back to Twilio
 """
-import aiohttp
+
 import asyncio
 import audioop
 import base64
@@ -33,24 +33,18 @@ from twilio.twiml.voice_response import Connect, Stream, VoiceResponse
 from scenarios import SCENARIOS, build_system_prompt
 
 # ── Config ─────────────────────────────────────────────────────────────────────
-TWILIO_SID    = os.environ["TWILIO_ACCOUNT_SID"]
-TWILIO_TOKEN  = os.environ["TWILIO_AUTH_TOKEN"]
-TWILIO_NUMBER = os.environ["TWILIO_PHONE_NUMBER"]
-DEEPGRAM_KEY  = os.environ["DEEPGRAM_API_KEY"]
-GROQ_KEY      = os.environ["GROQ_API_KEY"]
-PUBLIC_URL    = os.environ["PUBLIC_URL"].rstrip("/")
+TWILIO_SID      = os.environ["TWILIO_ACCOUNT_SID"]
+TWILIO_TOKEN    = os.environ["TWILIO_AUTH_TOKEN"]
+TWILIO_NUMBER   = os.environ["TWILIO_PHONE_NUMBER"]
+DEEPGRAM_KEY    = os.environ["DEEPGRAM_API_KEY"]
+GROQ_KEY        = os.environ["GROQ_API_KEY"]
+ASSEMBLYAI_KEY  = os.environ["ASSEMBLYAI_API_KEY"]
+PUBLIC_URL      = os.environ["PUBLIC_URL"].rstrip("/")
 
 TARGET_NUMBER = "+18054398008"
 
-DG_STT_URL = (
-    "wss://api.deepgram.com/v1/listen"
-    "?encoding=mulaw&sample_rate=8000&channels=1"
-    "&model=nova-2&punctuate=true"
-    "&utterance_end_ms=1200"
-    "&interim_results=false"
-)
-
-DG_TTS_URL = "https://api.deepgram.com/v1/speak?model=aura-asteria-en&encoding=linear16&sample_rate=8000"
+AASM_STT_URL = "wss://streaming.assemblyai.com/v3/ws?sample_rate=8000&encoding=pcm_mulaw"
+DG_TTS_URL   = "https://api.deepgram.com/v1/speak?model=aura-asteria-en&encoding=linear16&sample_rate=8000"
 
 twilio  = Client(TWILIO_SID, TWILIO_TOKEN)
 groq_cl = Groq(api_key=GROQ_KEY)
@@ -58,6 +52,7 @@ app     = FastAPI(title="PGAI Patient Bot")
 
 Path("transcripts").mkdir(exist_ok=True)
 Path("recordings").mkdir(exist_ok=True)
+
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -110,20 +105,21 @@ async def call_status(request: Request):
     )
     return JSONResponse({"ok": True})
 
+
 # ── WebSocket bridge ───────────────────────────────────────────────────────────
 
 @app.websocket("/stream/{scenario_id}")
 async def stream_handler(websocket: WebSocket, scenario_id: str):
     """
     Core bridge:
-      Twilio audio -> Deepgram STT -> Groq patient LLM -> Deepgram TTS -> Twilio
+      Twilio audio -> AssemblyAI STT -> Groq LLM -> Deepgram TTS -> Twilio
     """
     await websocket.accept()
 
-    scenario    = SCENARIOS.get(scenario_id, SCENARIOS["1"])
-    sys_prompt  = build_system_prompt(scenario)
-    history     = []
-    transcript  = []
+    scenario   = SCENARIOS.get(scenario_id, SCENARIOS["1"])
+    sys_prompt = build_system_prompt(scenario)
+    history    = []
+    transcript = []
     stream_sid: Optional[str] = None
 
     print(f"\n{'='*60}")
@@ -160,9 +156,9 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
             # ── Deepgram TTS: text -> PCM -> mulaw -> Twilio ──────────────────
             pcm = await tts(patient_text)
             if pcm:
-                mulaw_b64 = pcm16_to_mulaw_b64(pcm)
+                mulaw_b64  = pcm16_to_mulaw_b64(pcm)
                 mulaw_bytes = base64.b64decode(mulaw_b64)
-                chunk_size = 160 * 10
+                chunk_size  = 160 * 10
                 for i in range(0, len(mulaw_bytes), chunk_size):
                     chunk = mulaw_bytes[i : i + chunk_size]
                     await websocket.send_text(json.dumps({
@@ -172,11 +168,8 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
                     }))
                     await asyncio.sleep(0.005)
 
-
-    speech_queue: asyncio.Queue[str] = asyncio.Queue()
-
-    async def pipe_twilio_to_deepgram(dg_ws):
-        """Receive audio from Twilio, forward to Deepgram STT."""
+    async def pipe_twilio_to_assemblyai(stt_ws):
+        """Receive audio from Twilio, forward to AssemblyAI STT."""
         nonlocal stream_sid
         try:
             async for raw in websocket.iter_text():
@@ -192,7 +185,7 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
 
                 elif ev == "media":
                     if msg["media"].get("track") == "inbound":
-                        await dg_ws.send_bytes(
+                        await stt_ws.send(
                             base64.b64decode(msg["media"]["payload"])
                         )
 
@@ -203,24 +196,17 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
         except Exception as e:
             print(f"[TWILIO ERROR] {e}")
 
-
-    async def pipe_deepgram_to_queue(dg_ws):
-        """Receive transcripts from Deepgram, put complete utterances in queue."""
+    async def pipe_assemblyai_to_queue(stt_ws):
+        """Receive transcripts from AssemblyAI, put complete turns in queue."""
         try:
-            async for msg in dg_ws:
-                if msg.type == aiohttp.WSMsgType.TEXT:
-                    data = json.loads(msg.data)
-                    if data.get("type") == "Results":
-                        alts  = data.get("channel", {}).get("alternatives", [{}])
-                        text  = alts[0].get("transcript", "").strip() if alts else ""
-                        final = data.get("speech_final", False)
-                        if text and final:
-                            await speech_queue.put(text)
-                    continue
-
+            async for raw in stt_ws:
+                data = json.loads(raw)
+                if data.get("type") == "Turn":
+                    text = data.get("transcript", "").strip()
+                    if text:
+                        await speech_queue.put(text)
         except Exception as e:
-            print(f"[DEEPGRAM ERROR] {e}")
-
+            print(f"[STT ERROR] {e}")
 
     async def process_queue():
         """Pick utterances from queue one at a time and generate patient response."""
@@ -228,15 +214,16 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
             text = await speech_queue.get()
             await patient_respond(text)
 
-    dg_url_with_auth = f"{DG_STT_URL}&token={DEEPGRAM_KEY}"
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.ws_connect(dg_url_with_auth) as dg_ws:
-                await asyncio.gather(
-                    pipe_twilio_to_deepgram(dg_ws),
-                    pipe_deepgram_to_queue(dg_ws),
-                    process_queue(),
-                )
+        async with websockets.connect(
+            AASM_STT_URL,
+            extra_headers={"Authorization": ASSEMBLYAI_KEY}
+        ) as stt_ws:
+            await asyncio.gather(
+                pipe_twilio_to_assemblyai(stt_ws),
+                pipe_assemblyai_to_queue(stt_ws),
+                process_queue(),
+            )
     except Exception as e:
         print(f"[SESSION ERROR] {e}")
     finally:
@@ -251,7 +238,3 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
             for turn in transcript:
                 f.write(f"[{turn['speaker']}]:\n{turn['text']}\n\n")
         print(f"[SAVED] {fname}  ({len(transcript)} turns)")
-
-
-    
-
