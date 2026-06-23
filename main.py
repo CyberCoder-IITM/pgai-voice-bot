@@ -228,7 +228,7 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
 
     dg_headers = {"Authorization": f"Token {DEEPGRAM_KEY}"}
     try:
-        async with websockets.connect(DG_STT_URL, additional_headers=dg_headers) as dg_ws:
+        async with websockets.connect(DG_STT_URL, extra_headers=dg_headers) as dg_ws:
             await asyncio.gather(
                 pipe_twilio_to_deepgram(dg_ws),
                 pipe_deepgram_to_queue(dg_ws),
