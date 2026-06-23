@@ -44,7 +44,8 @@ TARGET_NUMBER = "+18054398008"
 
 DG_STT_URL = (
     "wss://api.deepgram.com/v1/listen"
-    "?encoding=mulaw&sample_rate=8000&channels=1"
+    f"?token={os.environ['DEEPGRAM_API_KEY']}"
+    "&encoding=mulaw&sample_rate=8000&channels=1"
     "&model=nova-2&punctuate=true"
     "&utterance_end_ms=1200&vad_events=true"
     "&interim_results=false"
@@ -226,9 +227,8 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
             text = await speech_queue.get()
             await patient_respond(text)
 
-    dg_headers = {"Authorization": f"Token {DEEPGRAM_KEY}"}
     try:
-        async with websockets.connect(DG_STT_URL, extra_headers=dg_headers) as dg_ws:
+        async with websockets.connect(DG_STT_URL) as dg_ws:
             await asyncio.gather(
                 pipe_twilio_to_deepgram(dg_ws),
                 pipe_deepgram_to_queue(dg_ws),
