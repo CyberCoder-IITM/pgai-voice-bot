@@ -1,0 +1,45 @@
+Scenario 6: weekend_request
+Patient  : James Anderson, 52-year-old retail store manager
+Goal     : Test how the agent handles weekend appointment requests
+Date/Time: 20260623_192719
+============================================================
+
+[PGAI AGENT]:
+Call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics. Part of Pretty Good AI. Am I speaking with test?
+
+[PATIENT (bot)]:
+No, my name is James Anderson, and I'm calling to schedule an appointment, please. I'm looking to come in this Sunday, specifically at 10am, if that's available.
+
+[PGAI AGENT]:
+Thanks for letting you know, James. Are you calling to schedule this appointment for yourself or for someone else?
+
+[PATIENT (bot)]:
+It's for myself, I'm the patient. And, um, just to confirm, you guys are open on Sundays, right?
+
+[PGAI AGENT]:
+We're open Monday through Friday, not on Sundays. Would you like to look at available times on another day?
+
+[PATIENT (bot)]:
+So you're closed on weekends, that's a bit inconvenient for me since Sunday's my only day off. Let me think, what's the earliest appointment I can get on a weekday, maybe something before 8am?
+
+[PGAI AGENT]:
+earliest weekday appointments start at 9 a.m. would you like to look at a 9 a.m. slot on a weekday
+
+[PATIENT (bot)]:
+That's a bit later than I was hoping for, I've got a pretty busy schedule during the day. How about something in the evening, do you have any appointments available after 6pm?
+
+[PGAI AGENT]:
+We have evening appointments on Wednesdays with availability until 7 p.m. Would you like to look at a slot after 6 p.m. on a Wednesday?
+
+[PATIENT (bot)]:
+That sounds a bit more manageable, yeah, I'd like to take a look at what's available after 6pm on Wednesday, please. What time slots do you have open then?
+
+[PGAI AGENT]:
+Can you please provide your date of birth?
+
+[PATIENT (bot)]:
+My date of birth is August 12, 1970. Now, about that Wednesday evening appointment...
+
+[PGAI AGENT]:
+Just to make sure I have your information correct, can you please fill your first and last name for me?
+

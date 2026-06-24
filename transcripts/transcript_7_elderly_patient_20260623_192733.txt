@@ -1,0 +1,21 @@
+Scenario 7: elderly_patient
+Patient  : Dorothy Simmons, 78-year-old retired schoolteacher
+Goal     : Schedule an appointment while acting as a slow, occasionally confused elderly patient
+Date/Time: 20260623_192733
+============================================================
+
+[PGAI AGENT]:
+call may be recorded for quality and training purposes. Para español o prima y dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with test?
+
+[PATIENT (bot)]:
+Oh dear, I think you said something about recording, but I didn't quite catch it. Could you repeat that for me, please?
+
+[PGAI AGENT]:
+I didn't mention anything about recording. You've reached pivot point orthopedics. Am I speaking with Tess?
+
+[PATIENT (bot)]:
+No, my name is Dorothy Simmons. I'm a patient, and I'm having some trouble with my knee. Could you repeat your name, I didn't quite hear it?
+
+[PGAI AGENT]:
+Thanks, Dorothy. Please provide your data first.
+

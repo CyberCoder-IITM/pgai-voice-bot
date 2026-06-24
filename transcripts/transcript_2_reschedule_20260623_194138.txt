@@ -1,0 +1,78 @@
+Scenario 2: reschedule
+Patient  : Michael Torres, 41-year-old high school teacher
+Goal     : Reschedule Thursday's appointment to next week
+Date/Time: 20260623_194138
+============================================================
+
+[PGAI AGENT]:
+This call may be recorded for quality and training purposes. Para español o prima el dos. Thanks for calling Pivot Point Orthopedics, part of pretty good AI. We're speaking with test.
+
+[PATIENT (bot)]:
+I'd like to speak with someone about an appointment I have scheduled, my name is Michael Torres and I have an appointment this Thursday.
+
+[PGAI AGENT]:
+Just to confirm, are you calling for yourself or on behalf of someone else?
+
+[PATIENT (bot)]:
+I'm calling for myself, I have an existing appointment and I need to make some changes to it.
+
+[PGAI AGENT]:
+please provide your date of birth.
+
+[PATIENT (bot)]:
+My date of birth is August 12, 1982.
+
+[PGAI AGENT]:
+Thank you.
+
+[PATIENT (bot)]:
+I have an appointment scheduled for this Thursday at 2pm, and I was wondering if I could reschedule it for another time.
+
+[PGAI AGENT]:
+Can you please spell your first and last name for me, just to make sure I have it correct?
+
+[PATIENT (bot)]:
+My first name is Michael, that's M-I-C-H-A-E-L, and my last name is Torres, that's T-O-R-R-E-S.
+
+[PGAI AGENT]:
+Would you like me to look up your record using the phone number you have on file with us? If so, please provide that number. If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+
+[PATIENT (bot)]:
+Um, let me think, I'm not sure what the phone number is that I have on file, can you just go ahead and look me up using my name and date of birth, that might be easier.
+
+[PGAI AGENT]:
+No problem. Could you please spell your first and last name for me one more time and confirm your date of birth?
+
+[PATIENT (bot)]:
+My first name is Michael, M-I-C-H-A-E-L, and my last name is Torres, T-O-R-R-E-S, and I was born August 12, 1982.
+
+[PGAI AGENT]:
+I have your phone number as 424-428-1474. And your date of birth as August 12, 1982. Is that correct?
+
+[PATIENT (bot)]:
+Yes, that's correct, my phone number is 424-428-1474, and my date of birth is August 12, 1982, so you should have my record now.
+
+[PGAI AGENT]:
+I can't proceed further right now, but I can make sure our clinic support team follows up with you. Would you like me to connect you to our patient support team?
+
+[PATIENT (bot)]:
+No, that's okay, I'd rather just get this taken care of now, can you please just help me reschedule my appointment that's scheduled for this Thursday at 2pm?
+
+[PGAI AGENT]:
+Something's not right with the system, and I can't access your record to help with rescheduling. I'll let our clinic support team know so they can follow up with you as soon as possible. Please hold while I document this for the team.
+
+[PATIENT (bot)]:
+Okay, I'll hold, but can you at least tell me if it'll be today or tomorrow before someone from the team follows up with me, I really need to reschedule this appointment as soon as possible.
+
+[PGAI AGENT]:
+Live support is available right now. I'll connect you to our patient support team so they can help you reschedule your appointment. Please stay on the line. Connecting you to a representative. Please wait.
+
+[PATIENT (bot)]:
+Thank you, I'll wait, hopefully they can help me reschedule my appointment for next week.
+
+[PGAI AGENT]:
+Good AI test line. Goodbye.
+
+[PATIENT (bot)]:
+Wait, no, I'm being transferred to a live person, right? Hello? Is someone there?
+

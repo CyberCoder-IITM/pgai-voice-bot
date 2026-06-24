@@ -1,0 +1,66 @@
+Scenario 1: new_appointment
+Patient  : Sarah Johnson, 34-year-old office manager
+Goal     : Book a routine checkup appointment
+Date/Time: 20260623_194138
+============================================================
+
+[PGAI AGENT]:
+This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with TEST?
+
+[PATIENT (bot)]:
+No, my name is Sarah Johnson, and I'm calling to schedule an appointment, please.
+
+[PGAI AGENT]:
+Thanks for letting me know, Sarah. Are you calling to schedule this appointment for yourself or for someone else?
+
+[PATIENT (bot)]:
+I'm calling to schedule it for myself, just a routine checkup.
+
+[PGAI AGENT]:
+please provide your date of birth.
+
+[PATIENT (bot)]:
+My date of birth is August 12, 1988.
+
+[PGAI AGENT]:
+Just to confirm, I have your name as Sarah Johnson and your date of birth as August 12, 1988. Is that correct? If so, could you please spell your first and last name for me? Okay.
+
+[PATIENT (bot)]:
+That's correct. My first name is spelled S-A-R-A-H and my last name is spelled J-O-H-N-S-O-N.
+
+[PGAI AGENT]:
+Thanks for spelling that out. Just to confirm, your first name is spelled S-A-R-H, and your last name is J-O-A-C-H-I-N-A-S-O-I-N. Is that correct?
+
+[PATIENT (bot)]:
+No, that's not correct. I said my first name is S-A-R-A-H, not S-A-R-H, and my last name is J-O-H-N-S-O-N, not J-O-A-C-H-I-N-A-S-O-I-N. Can you please get that right?
+
+[PGAI AGENT]:
+Would you like to use your phone number to look up your record? If so, please provide the number you have on file with us. If you're not sure I can confirm your name and date of birth again, just let me know what you prefer.
+
+[PATIENT (bot)]:
+I think I'd rather just use my name and date of birth, we already confirmed those, right? You can just look me up that way.
+
+[PGAI AGENT]:
+Understood. To make sure I have it right, please spell your first and last name for me one more time, along with your date of birth.
+
+[PATIENT (bot)]:
+My first name is S-A-R-A-H, my last name is J-O-H-N-S-O-N, and my date of birth is August 12, 1988.
+
+[PGAI AGENT]:
+I have your first name is S.A.R.H. Last name is Johnson, date of birth August 12th, 1988, and phone number is 428-1474. Is all of that correct?
+
+[PATIENT (bot)]:
+No, my first name is actually S-A-R-A-H, not S-A-R-H, and I didn't give you my phone number, so I'm not sure how you got that. Can you please just go by my name and date of birth for now?
+
+[PGAI AGENT]:
+I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold while I connect you to our patient support team. Connecting you to a representative. Please wait.
+
+[PATIENT (bot)]:
+Okay, I'll wait. Hopefully, they can help me schedule that appointment.
+
+[PGAI AGENT]:
+line. Goodbye.
+
+[PATIENT (bot)]:
+Wait, I think we got disconnected. Hello?
+

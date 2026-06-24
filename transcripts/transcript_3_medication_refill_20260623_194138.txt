@@ -1,0 +1,48 @@
+Scenario 3: medication_refill
+Patient  : Linda Park, 58-year-old retired nurse
+Goal     : Get a standard medication refill approved
+Date/Time: 20260623_194138
+============================================================
+
+[PGAI AGENT]:
+This call may be recorded for quality and training purposes. Para Español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with tests?
+
+[PATIENT (bot)]:
+No, my name is Linda Park, and I'm calling about a medication refill, actually. I'm a patient of Dr. Chen.
+
+[PGAI AGENT]:
+Please provide your date of birth.
+
+[PATIENT (bot)]:
+Um, let me think... my date of birth is June 12, 1965.
+
+[PGAI AGENT]:
+Just to confirm, I have your name as Linda Park in your date of birth as June 12, 1965. Is that correct? If so, could you please spell your first and last name for me? Okay.
+
+[PATIENT (bot)]:
+Yes, that's correct. My first name is L-I-N-D-A, and my last name is P-A-R-K.
+
+[PGAI AGENT]:
+Would you like to use your phone number to look up your record? If so, please provide the number you have on file with us. If you're not sure, just let me know.
+
+[PATIENT (bot)]:
+I think I do have a phone number on file with you, let me check... okay, it's 555-1234.
+
+[PGAI AGENT]:
+I have your phone number as 555-1234 and your date of birth is June 12, 1965. Is that correct?
+
+[PATIENT (bot)]:
+Yes, that's all correct. Now, about my medication refill...
+
+[PGAI AGENT]:
+I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold while I connect you to our patient support team. Connecting you to a representative. Please wait.
+
+[PATIENT (bot)]:
+Okay, I'll hold. Thanks for helping me get to the right person, I just need to get my blood pressure medication refilled.
+
+[PGAI AGENT]:
+test line. Goodbye.
+
+[PATIENT (bot)]:
+Hello? I think we got disconnected. Is anyone there?
+

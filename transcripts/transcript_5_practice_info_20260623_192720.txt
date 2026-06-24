@@ -1,0 +1,57 @@
+Scenario 5: practice_info
+Patient  : Emma Wilson, 45-year-old marketing executive, new to the area
+Goal     : Gather information before deciding to register as a new patient
+Date/Time: 20260623_192720
+============================================================
+
+[PGAI AGENT]:
+This call may be recorded for quality and training purposes. Para español o prima y dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with test?
+
+[PATIENT (bot)]:
+No, you're speaking with Emma Wilson, I'm a potential new patient, and I was just calling to get some information about your office, like your hours of operation.
+
+[PGAI AGENT]:
+Sure, Emma. Pit at Flight Orthopedics is open Monday through Friday. Our hours are 9 a.m. to 4 p.m. on Monday, Tuesday, and Thursday, 12 p.m. to 7 p.m. on Wednesday, and 9 a.m. to 12 p.m. on Friday. Is there anything else you'd like to know about the clinic?
+
+[PATIENT (bot)]:
+That's helpful, thank you. Um, let me think, I was also wondering if you guys accept Blue Cross Blue Shield PPO, I have that insurance and I want to make sure you're in network before I consider making an appointment.
+
+[PGAI AGENT]:
+We do accept most insurance plans and Blue Cross Blue Shield PPO is commonly accepted. If you'd like, I can double check your specific plan details for you. Would you like to go over your insurance information now or do you have other questions first?
+
+[PATIENT (bot)]:
+I'd like to go ahead and ask a few more questions first, if that's okay. So, how long does a typical new patient appointment usually take, just so I can plan my schedule accordingly?
+
+[PGAI AGENT]:
+A typical new patient appointment at Pivot Point Orthopedics usually takes about 30 minutes. If you have a more complex issue, it could take longer, but most first visits are around half an hour. Anything else you'd like to know?
+
+[PATIENT (bot)]:
+That's helpful to know. I was also wondering, if I were to schedule an appointment, how soon could I get in, like could I get a same-week appointment or would I have to wait a bit longer?
+
+[PGAI AGENT]:
+We often have openings the same week for new patients, especially if your schedule is flexible. Would you like to check specific availability or do you have more questions first?
+
+[PATIENT (bot)]:
+I think that's all the information I needed, actually. You've answered all my questions, so I'd like to go ahead and check availability now, if that's okay. Can you let me know what's available this week?
+
+[PGAI AGENT]:
+Could you please provide your date of birth?
+
+[PATIENT (bot)]:
+My date of birth is August 12, 1978, but I'm not sure if I'm ready to schedule an appointment just yet, I just wanted to check availability, can we do that without fully registering me as a patient?
+
+[PGAI AGENT]:
+I can check general availability for you without registering you as a patient. Would you like morning or afternoon times this week?
+
+[PATIENT (bot)]:
+That's great, thank you. I'm pretty flexible, but if I had to choose, I'd say afternoons would be better for me, so could you check what's available in the afternoons this week?
+
+[PGAI AGENT]:
+We have afternoon openings this week on Tuesday, Wednesday, and Thursday. Would you like to hear a specific time for one of those days?
+
+[PATIENT (bot)]:
+Yes, that would be great, could you tell me what times are available on Wednesday, that's probably the best day for me, and then I can decide if I want to schedule something.
+
+[PGAI AGENT]:
+On Wednesday, we have afternoon appointments available between 12 p.m. and 7 p.m. Would you like to hear a specific time slot, such as early afternoon or later in the day?
+

@@ -1,0 +1,72 @@
+Scenario 4: cancel_appointment
+Patient  : Robert Davis, 29-year-old software developer
+Goal     : Cancel next Friday appointment and confirm no penalty
+Date/Time: 20260623_194138
+============================================================
+
+[PGAI AGENT]:
+This call may be recorded for quality and training purposes. Para español, oprima el 2.
+
+[PATIENT (bot)]:
+Hi, I'd like to speak with someone about an appointment I have scheduled, can you help me with that?
+
+[PGAI AGENT]:
+part of pretty good AI. Am I speaking with test? Yes.
+
+[PATIENT (bot)]:
+No, I'm a real person, my name is Robert Davis, and I'm calling about an appointment I have next Friday at 10am.
+
+[PGAI AGENT]:
+Please provide your date of birth.
+
+[PATIENT (bot)]:
+Um, it's September 12th, 1993.
+
+[PGAI AGENT]:
+Just to confirm, I have your name as Robert Davis and your date of birth is September 12, 1993. Is that correct?
+
+[PATIENT (bot)]:
+That's correct, yeah, that's me, now I'd like to talk about my appointment next Friday, can you help me with that?
+
+[PGAI AGENT]:
+Would you like to use your phone number to look up your record? If so, please tell me the number you have on file with us. If you're not sure, I can confirm your name and date of birth again.
+
+[PATIENT (bot)]:
+I think you already have my name and date of birth, so you should be able to look up my appointment, right? I'd rather not give out my phone number if that's okay.
+
+[PGAI AGENT]:
+No problem. Could you please spell out your first and last name for me just to make sure I have it exactly right?
+
+[PATIENT (bot)]:
+My first name is Robert, that's R-O-B-E-R-T, and my last name is Davis, that's D-A-V-I-S.
+
+[PGAI AGENT]:
+I have your phone number is 424-428-1474, and your date of birth as September 12, 1993. Is that correct?
+
+[PATIENT (bot)]:
+Yeah, that's my phone number and date of birth, now can we please talk about my appointment next Friday at 10am, I need to cancel it.
+
+[PGAI AGENT]:
+I can't proceed further right now, but I can make sure our clinic support team follows up with you. Would you like me to connect you to a live agent?
+
+[PATIENT (bot)]:
+No, that's okay, I'd rather just take care of it now, can you please just check on my appointment for next Friday at 10am and let me know if I can cancel it, and if there's any fee for cancelling?
+
+[PGAI AGENT]:
+I'm unable to cancel your appointment directly because I can't access your record right now. Since live support is available, I recommend connecting you to our clinic support team so they can help right away. Would you like me to transfer you now?
+
+[PATIENT (bot)]:
+Okay, fine, yeah, go ahead and transfer me to a live agent, I just want to get this taken care of, I don't want to have to call back later.
+
+[PGAI AGENT]:
+connecting you to a representative. Please wait.
+
+[PATIENT (bot)]:
+Okay, I'll wait.
+
+[PGAI AGENT]:
+AI test line. Goodbye.
+
+[PATIENT (bot)]:
+Wait, what, I thought I was being transferred to a live agent, I'm still trying to cancel my appointment, hello?
+
