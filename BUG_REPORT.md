@@ -12,70 +12,70 @@
 | Severity | Count |
 | -------- | ----- |
 | Critical | 2     |
-| High     | 4     |
+| High     | 3     |
 | Medium   | 3     |
 
 ---
 
-## BUG-001 — Demo patient profile leaks into live calls
+## BUG-001 — Demo patient profile leaks into every call
 
 **Severity:** Critical  
-**Scenario:** 1 (new_appointment), 2 (reschedule), 3 (medication_refill), 4 (cancel_appointment)  
-**Transcript:** transcript_1_new_appointment_20260623_194138.txt  
-**Timestamp in call:** ~0:45
-
-**What happened:**  
-The agent opens every call with "Am I speaking with TEST?" -- the name of the demo patient
-profile from pgai.us/athena. In scenarios 2, 3, and 4, regardless of who was calling, the
-agent identified the caller as the demo patient. The demo profile (Name: TEST, DOB: July 4, 2000) bleeds into every call session.
-
-**Why it is a problem:**  
-The demo patient profile is not being isolated from production call sessions. Every real
-caller is being partially identified as the demo patient. This is a data isolation failure
-that would be a serious HIPAA concern in a real clinical deployment. Patients are being
-assigned wrong identities.
-
----
-
-## BUG-002 — Random Spanish language injection mid-conversation
-
-**Severity:** Critical  
-**Scenario:** 1, 3, 4, 5 (multiple calls)  
+**Scenario:** All scenarios (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)  
 **Transcript:** transcript_1_new_appointment_20260623_194138.txt  
 **Timestamp in call:** ~0:05
 
 **What happened:**  
-The agent randomly inserts a Spanish-language prompt mid-conversation: "para español, oprima
-el 2" (press 2 for Spanish). This occurred across multiple calls at unpredictable points,
-sometimes as the very first substantive response after the patient stated their reason for
-calling. In scenario 4, the agent said "Para español, oprima el 2" immediately after the
-patient said "Hi, I'd like to speak with someone about an appointment."
+Every single call opened with the agent asking "Am I speaking with TEST?" -- the name of
+the demo patient from pgai.us/athena. Regardless of who was calling, the agent identified
+the caller as the demo test patient. This occurred across all 11 test calls.
 
 **Why it is a problem:**  
-The bilingual IVR prompt is firing randomly instead of only at call start. A patient calling
-to cancel an appointment suddenly hears Spanish instructions with no context. This breaks
-conversational flow and would deeply confuse any real patient.
+The demo patient profile is not being isolated from production call sessions. Every real
+caller is being greeted as the demo test patient. In a real deployment, every patient would
+be asked if they are someone else entirely. This is a fundamental data isolation failure
+that would destroy patient trust and create HIPAA compliance concerns.
 
 ---
 
-## BUG-003 — Agent catastrophically halluccinates patient name spelling
+## BUG-002 — Agent catastrophically halluccinates patient name when confirming spelling
 
-**Severity:** High  
+**Severity:** Critical  
 **Scenario:** 1 (new_appointment)  
 **Transcript:** transcript_1_new_appointment_20260623_194138.txt  
 **Timestamp in call:** ~1:30
 
 **What happened:**  
-When Sarah Johnson spelled her name as S-A-R-A-H J-O-H-N-S-O-N, the agent confirmed back:
-"your first name is spelled S-A-R-H, and your last name is J-O-A-C-H-I-N-A-S-O-I-N."
-The agent completely hallucinated a 14-character nonsense string instead of the 7-character
-name the patient had just spelled letter by letter.
+Sarah Johnson spelled her name letter by letter: S-A-R-A-H J-O-H-N-S-O-N. The agent
+confirmed back: "your first name is spelled S-A-R-H, and your last name is
+J-O-A-C-H-I-N-A-S-O-I-N." The agent hallucinated a 14-character nonsense string in place
+of the 7-character last name the patient had just spelled.
 
 **Why it is a problem:**  
-The agent is not reliably capturing or repeating back patient-provided information.
-A patient verifying their identity before a medical appointment needs exact confirmation.
-Getting a completely wrong name could result in wrong patient records being accessed
-or modified.
+A patient spelling their name for identity verification expects exact confirmation. The agent
+is not reliably capturing spoken letter sequences. If the agent were to save this hallucinated
+name to a patient record, the record would be permanently corrupted. This is a direct patient
+safety concern.
+
+---
+
+## BUG-003 — Agent repeatedly asks patient to spell name after already confirming it
+
+**Severity:** High  
+**Scenario:** 1 (new_appointment), 2 (reschedule)  
+**Transcript:** transcript_1_new_appointment_20260623_194138.txt  
+**Timestamp in call:** ~1:00 and ~1:45
+
+**What happened:**  
+In scenario 1, Sarah Johnson was asked to spell her name three separate times in the same
+call. After spelling it the second time, the agent confirmed it incorrectly, then asked her
+to spell it again. In scenario 2, Michael Torres was asked to spell his name twice despite
+the agent already having confirmed his date of birth.
+
+**Why it is a problem:**  
+Repeatedly asking patients for the same information is a poor user experience and suggests
+the agent has no short-term memory of what was already collected in the current call. For a
+patient calling to schedule an appointment, being asked to spell their name three times would
+cause frustration and call abandonment.
 
 ---
 
@@ -87,132 +87,122 @@ or modified.
 **Timestamp in call:** ~2:15
 
 **What happened:**  
-Robert Davis explicitly said "I'd rather not give out my phone number." The agent then
-responded: "I have your phone number as 424-428-1474." The agent revealed the patient's
-phone number without the patient providing it during this call.
+Robert Davis explicitly said "I'd rather not give out my phone number if that's okay."
+The agent then responded: "I have your phone number as 424-428-1474. Is that correct?"
+The agent revealed a phone number the patient had specifically declined to provide.
 
 **Why it is a problem:**  
-The agent is leaking PII from the demo patient profile or a previous session to the current
-caller without consent. A patient who declined to share their phone number had it revealed
-back to them anyway. This is a privacy violation and would be a HIPAA concern in production.
+The agent is surfacing PII from a previous session or the demo profile without patient
+consent. A patient who declined to share their phone number had it read back to them
+unprompted. This is a privacy violation and would be a HIPAA compliance issue in production.
 
 ---
 
-## BUG-005 — Agent halluccinates clinic name mid-conversation
+## BUG-005 — Agent terminates calls with unresolved patient needs
 
 **Severity:** High  
-**Scenario:** 5 (practice_info)  
-**Transcript:** transcript_5_practice_info_20260623_192720.txt  
-**Timestamp in call:** ~0:30
-
-**What happened:**  
-When providing office hours to a new potential patient, the agent said: "Pit at Flight
-Orthopedics is open Monday through Friday." The clinic name is Pivot Point Orthopedics,
-not "Pit at Flight Orthopedics."
-
-**Why it is a problem:**  
-The agent hallucinated a completely different clinic name while giving a new patient official
-clinic information. A patient researching the practice would receive incorrect branding. This
-suggests the agent's speech generation is not reliably anchored to correct clinical data.
-
----
-
-## BUG-006 — Agent prematurely ends calls with unresolved patient needs
-
-**Severity:** High  
-**Scenario:** 2, 3, 4, 7 (multiple)  
+**Scenario:** 1, 2, 3, 4, 7, 10 (multiple)  
 **Transcript:** transcript_2_reschedule_20260623_194138.txt  
 **Timestamp in call:** ~3:00
 
 **What happened:**  
-In multiple calls, the agent said "test line. Goodbye." or "AI test line. Goodbye." and
-terminated the conversation while the patient still had an active unresolved request. In
-scenario 2, Michael Torres was waiting for rescheduling confirmation when the agent ended
-the call. In scenario 3, Linda Park had not received her refill confirmation before
-the agent disconnected. In scenario 7, an elderly patient was told "Connecting you to a
-representative. Please wait." immediately followed by "test line. Goodbye."
+In 6 out of 11 calls, the agent said "test line. Goodbye." or "AI test line. Goodbye."
+and ended the conversation while the patient had an active unresolved request. Examples:
+
+- Scenario 2: Michael Torres was waiting for rescheduling confirmation
+- Scenario 3: Linda Park was waiting for medication refill approval
+- Scenario 7: Dorothy Simmons was told "Connecting to a representative. Please wait."
+  immediately followed by "test line. Goodbye."
 
 **Why it is a problem:**  
-The agent abandons patients before their goals are met. For a healthcare voice agent, this
-means patients do not get their prescriptions, appointments, or information. The pattern of
-false transfer promises followed by immediate disconnection is the most frustrating
-patient experience possible.
+More than half of all calls ended with the patient's goal completely unmet. For a healthcare
+voice agent, this means patients do not receive their prescriptions or appointment changes.
+The premature termination pattern appears to be triggered when the agent cannot access
+patient records, which suggests a fallback behavior that abandons patients rather than
+helping them.
 
 ---
 
-## BUG-007 — Agent garbles its own canned responses
+## BUG-006 — Agent cannot process medication refill requests
 
 **Severity:** Medium  
-**Scenario:** 8 (barge_in_impatient)  
-**Transcript:** transcript_8_barge_in_impatient_20260623_224028.txt  
-**Timestamp in call:** ~2:30
+**Scenario:** 3 (medication_refill), 10 (controlled_substance_refill)  
+**Transcript:** transcript_3_medication_refill_20260623_194138.txt  
+**Timestamp in call:** ~1:30
 
 **What happened:**  
-The agent responded: "I can't foresee further right now, but I can make sure our clinic
-support team follows up with you." The correct phrase should be "I can't proceed further."
-In the same call, the agent also said "I have your day of birth" instead of "date of birth."
+In both medication-related scenarios, the agent collected the patient's name and date of
+birth, then immediately responded with "I can't proceed further right now, but I can make
+sure our clinic support team follows up with you." Neither Linda Park's lisinopril refill
+nor Maria Garcia's Adderall refill were addressed. Both calls ended with the agent
+disconnecting before any refill action was taken.
 
 **Why it is a problem:**  
-The agent is corrupting its own scripted responses. These errors undermine the professional
-tone expected of a healthcare voice agent and suggest the language model is paraphrasing
-fixed phrases instead of using them verbatim.
+Prescription refills are one of the core use cases listed for PGAI's voice agent. The agent
+is completely unable to handle this workflow, routing all refill requests to a support team
+that never materializes. Patients dependent on daily medication who call for a refill will
+receive no help and no callback.
 
 ---
 
-## BUG-008 — Agent self-confirms patient identity without patient agreeing
+## BUG-007 — Agent promises live transfer that never occurs
 
 **Severity:** Medium  
-**Scenario:** 4 (cancel_appointment)  
-**Transcript:** transcript_4_cancel_appointment_20260623_194138.txt  
-**Timestamp in call:** ~0:20
-
-**What happened:**  
-The agent asked and immediately answered its own question: "Am I speaking with test? Yes."
-No patient confirmation was given. The agent confirmed a false identity on behalf of
-the patient without waiting for a response.
-
-**Why it is a problem:**  
-Patient identity verification must come from the patient, not be assumed or self-generated
-by the system. The agent is fabricating consent. In a real clinic this could allow the
-wrong person to access another patient's medical records.
-
----
-
-## BUG-009 — Agent fails to transfer despite promising it will
-
-**Severity:** Medium  
-**Scenario:** 2, 3, 7 (multiple)  
+**Scenario:** 2, 3, 4, 7 (multiple)  
 **Transcript:** transcript_7_elderly_patient_20260623_233305.txt  
 **Timestamp in call:** ~1:45
 
 **What happened:**  
-The agent repeatedly told patients "Connecting you to a representative. Please wait." but
-then immediately said "test line. Goodbye." No actual transfer occurred. This happened in
-scenarios 2, 3, and 7. In scenario 7, an elderly patient with knee pain was told twice
-"Please wait" before being disconnected.
+In 4 calls, the agent said "Connecting you to a representative. Please wait." but then
+immediately disconnected. In scenario 7, an elderly patient with knee pain was told
+"Please wait. Please wait." twice in a row before the call ended.
 
 **Why it is a problem:**  
-The agent promises transfers that never happen. Patients are left waiting for help that
-never arrives, then the call ends. This is the most trust-destroying failure pattern in
-the system.
+The agent is making a promise it cannot keep. Patients who stay on the line expecting a
+transfer are instead disconnected. This false promise pattern is worse than simply saying
+the agent cannot help, because it causes the patient to wait before ultimately receiving
+no assistance.
+
+---
+
+## BUG-008 — Agent cannot locate patient records for routine requests
+
+**Severity:** Medium  
+**Scenario:** 1, 2, 3, 4 (multiple)  
+**Transcript:** transcript_2_reschedule_20260623_194138.txt  
+**Timestamp in call:** ~2:00
+
+**What happened:**  
+After collecting name, date of birth, and phone number, the agent repeatedly responded with
+"Something's not right with the system, and I can't access your record." This occurred for
+routine requests including appointment rescheduling, appointment cancellation, and medication
+refills. In scenario 2, Michael Torres provided all requested information three times before
+the agent admitted it could not access his record.
+
+**Why it is a problem:**  
+If the agent cannot reliably access patient records after identity verification, it cannot
+fulfill any patient request. The system appears to be in a state where the lookup
+functionality is broken for most callers, making the agent unable to serve its primary
+purpose.
 
 ---
 
 ## Observations
 
-- Office hours information was accurate when provided: Monday/Tuesday/Thursday 9am-4pm,
-  Wednesday 12pm-7pm, Friday 9am-12pm.
-- Blue Cross Blue Shield PPO was correctly confirmed as accepted in scenario 5 and 6.
-- The agent consistently requested name and date of birth for identity verification,
-  which is appropriate protocol.
-- Scenario 8 (barge-in impatient) showed the agent could handle a scattered caller
-  reasonably well, eventually providing useful information about parking and callback timing.
+- Office hours information was accurate: Mon/Tue/Thu 9am-4pm, Wed 12pm-7pm, Fri 9am-12pm.
+- Blue Cross Blue Shield PPO was correctly confirmed as accepted in scenarios 5 and 6.
+- Scenario 9 (reluctant caller) was handled gracefully -- agent maintained patient
+  confidentiality and appropriately redirected the caller to a primary care provider.
+- Scenario 6 (weekend request) correctly informed the patient the practice is closed on
+  weekends and offered Wednesday evening alternatives.
+- Scenario 8 (barge-in impatient) showed reasonable patience with a scattered caller and
+  provided helpful parking information unprompted.
 
 ## Recommendations
 
-1. Fix demo patient profile isolation -- sessions must not carry the TEST profile into calls.
-2. Move bilingual IVR prompt to call start only, triggered once, not randomly mid-session.
-3. Implement reliable session state isolation between concurrent calls to prevent PII leakage.
-4. Add a real transfer mechanism or remove transfer promises entirely from the script.
-5. Fix name capture -- agent must repeat back exactly what the patient spelled, not hallucinate.
-6. Anchor clinic name and agent identity to a verified data source, not language model generation.
+1. Fix demo patient profile isolation -- TEST profile must not appear in production calls.
+2. Fix patient record lookup -- the agent cannot serve patients if it cannot access records.
+3. Add real transfer capability or remove transfer language from the fallback script entirely.
+4. Implement reliable short-term memory for name and information already collected in session.
+5. Fix name spelling capture -- agent must echo back exactly what the patient spelled.
+6. Build proper medication refill workflow instead of immediately escalating to support team.
