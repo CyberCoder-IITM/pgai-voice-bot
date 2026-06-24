@@ -1,0 +1,66 @@
+Scenario 9: reluctant_caller
+Patient  : A caller who is initially very guarded and private
+Goal     : Test handling of a private health concern and a reluctant, guarded caller
+Date/Time: 20260623_231320
+============================================================
+
+[PGAI AGENT]:
+This call may be recorded for quality and training purposes. Thanks for calling Pivot Point Orthopedics. Part of pretty good AI. Am I speaking with tests?
+
+[PATIENT (bot)]:
+Um, I think I might have called the wrong number. I'm actually looking for health advice, but I don't know if it's the right place. Could you, uh, tell me a bit more about who I'm speaking with and what kind of services you offer?
+
+[PGAI AGENT]:
+you've reached Pivot Point Orthopedics. We help with joint, muscle, and bone conditions, everything from sports injuries and chronic pain to post-surgical recovery and physical therapy. We offer doctor visits, procedures, and physical therapy all in one place. If you need an appointment or have questions about orthopedic care, I can help. I can't give medical advice, but I can connect you with our team or help you schedule a visit.
+
+[PATIENT (bot)]:
+Okay, that sounds a bit different from what I'm looking for. I'm not really experiencing any bone or muscle problems. I was just... um, calling to ask a general question about, uh, testing. Do I have to give my name to talk to someone about that?
+
+[PGAI AGENT]:
+You don't have to give your name if you just want general information about the clinic or our services. If your question is about a specific test or your personal health,
+
+[PATIENT (bot)]:
+Do I have to give my name then? And is this call recorded? I'm just not really sure how this works.
+
+[PGAI AGENT]:
+You only need to give your name if you want to discuss personal health details or schedule something. For general questions, you don't have to share your name. Calls may be recorded for quality and training. Let me know what you'd like to ask, and I'll do my best to help.
+
+[PATIENT (bot)]:
+Okay, that sounds a bit better. I guess I'm just being cautious. Let me think for a second... My question is about, uh, screenings. You know, just general health checks? Do you all, uh, offer those kind of things here?
+
+[PGAI AGENT]:
+We focus on orthopedic care, so our screenings are related to joint, muscle, and bone health. We offer general health checks like blood work or cancer screenings. If you need an orthopedic evaluation or physical therapy, I can help set that up.
+
+[PATIENT (bot)]:
+That makes sense, but I'm not really interested in that. I'm more concerned about, uh, other kinds of health screenings. The kind that, you know, check for... other things. Can I ask you something about that?
+
+[PGAI AGENT]:
+You can ask, but I may not have details about general health screenings outside of orthopedics. I can let you know what we offer here or help you find the right place if you need a different type of clinic. What would you like to know?
+
+[PATIENT (bot)]:
+Well, I'm just not really sure. I'm not even sure if I'm at the right place to be honest. But I guess I'll ask anyway. Do you, uh, offer testing for... infections? I mean, not exactly, but you know what I'm getting at.
+
+[PGAI AGENT]:
+We don't offer testing for infections or general medical screenings here. Pivot Point Orthopedics specializes in joint, muscle, and bone care. For infection testing or broader health checks, you'll want to contact a primary care clinic or urgent care. If you ever need orthopedic help, I'm here for that.
+
+[PATIENT (bot)]:
+Okay, that makes sense, I guess. I didn't think you would do that kind of testing here. To be honest, I was a bit worried about... something. But I guess I should just go to a regular doctor's office or something. Um, how would I go about finding a primary care clinic that offers, you know, the kind of testing I'm thinking of?
+
+[PGAI AGENT]:
+The best way is to search online for primary care clinics or urgent care centers near you. You can also ask your insurance provider for a list of covered clinics. They can help with general health screenings and infection testing. If you have a regular doctor, you can call their office for advice too.
+
+[PATIENT (bot)]:
+That's a good idea. I think I'll try searching online. I just don't want to, you know, walk into a clinic without being prepared. But I appreciate your help. Um, thank you for, uh, understanding.
+
+[PGAI AGENT]:
+Of course, if you ever need orthopedic care, feel free to call us. Take care and good luck with your search.
+
+[PATIENT (bot)]:
+Thanks, I appreciate it. I'll definitely keep that in mind. Thanks again for your help, and have a good day. Goodbye.
+
+[PGAI AGENT]:
+You're welcome. Wishing you a good day as well. Goodbye.
+
+[PATIENT (bot)]:
+Goodbye.
+

@@ -1,0 +1,60 @@
+Scenario 8: barge_in_impatient
+Patient  : Kevin Zhang, 31-year-old startup founder
+Goal     : Test barge-in handling and ability to manage a scattered caller
+Date/Time: 20260623_224028
+============================================================
+
+[PGAI AGENT]:
+All may be recorded for quality and training purposes. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with TEST?
+
+[PATIENT (bot)]:
+No, my name is Kevin Zhang, I'm a patient, and I need to reschedule an appointment, can you help me with that, what's the soonest I can get in?
+
+[PGAI AGENT]:
+Please provide your date of birth.
+
+[PATIENT (bot)]:
+Um, it's August 12, 1991, but let me ask, will rescheduling the appointment affect my copay or anything, and by the way, what's the parking situation like at your office?
+
+[PGAI AGENT]:
+Can you please spell your first and last name for me to make sure I have it right? I have your day of birth as August 12, 1991.
+
+[PATIENT (bot)]:
+It's K-E-V-I-N, and my last name is Z-H-A-N-G, but can we talk about the appointment time now, I'm kinda in a rush, I had it scheduled for next Wednesday at 2, can I move it to Monday instead?
+
+[PGAI AGENT]:
+To help with your request, can you confirm the phone number you have on file with us? If you're not sure, please spell your first and last name for me one more time.
+
+[PATIENT (bot)]:
+My phone number is 555-1234, and yeah, my name is K-E-V-I-N Z-H-A-N-G, now about that appointment, do you have any openings on Monday, and also, you didn't answer my question about parking, is it free or do I need to pay for it?
+
+[PGAI AGENT]:
+I have your phone number as 555-1234 and your date of birth as August 12, 1991. Is that correct?
+
+[PATIENT (bot)]:
+That's correct, now can we please finalize the rescheduling, I need to know if Monday works, and what time, I'm trying to fit it in between meetings, so just a yes or no on the Monday appointment would be great, thanks.
+
+[PGAI AGENT]:
+I can't foresee further right now, but I can make sure our clinic support team follows up with you. Would you like me to connect you to our patient support team?
+
+[PATIENT (bot)]:
+No, no, that's okay, I just want to reschedule this one appointment, can you just check if Monday at, say, 10 am is available, and then I'll be good, I don't need to talk to anyone else, just a simple yes or no on that time slot.
+
+[PGAI AGENT]:
+I'm unable to reschedule your appointment right now due to a system issue. I'll document your request and have our clinic support team follow up with you as soon as possible. Free parking is available in the surface lot in front of the building. Please hold while I update your request.
+
+[PATIENT (bot)]:
+Okay, that's fine, thanks for letting me know about the parking, that's a relief, but can you just give me an idea of when I might hear back from the clinic support team, is it going to be today, tomorrow, and can they call me or will it be an email, just need to plan my schedule.
+
+[PGAI AGENT]:
+Our clinic support team will get back to you as soon as they can, usually by phone. Since support is available now, you should hear from someone today. If you prefer a call or email, just let them know when they reach out.
+
+[PATIENT (bot)]:
+Alright, sounds good, thanks for the update, I'll just wait to hear from them then, and yeah, a call is fine, don't need to email, appreciate your help, I'm gonna go, thanks, bye.
+
+[PGAI AGENT]:
+you're all set. The team will call you soon about your appointment. Have a great day.
+
+[PATIENT (bot)]:
+Thanks, you too, bye.
+

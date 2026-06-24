@@ -1,9 +1,0 @@
-Scenario 8: barge_in_impatient
-Patient  : Kevin Zhang, 31-year-old startup founder
-Goal     : Test barge-in handling and ability to manage a scattered caller
-Date/Time: 20260623_192851
-============================================================
-
-[PGAI AGENT]:
-This call may be recorded for quality and training purposes. Para Español o Prima y Dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with TEST?
-

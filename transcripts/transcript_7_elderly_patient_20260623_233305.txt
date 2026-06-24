@@ -1,0 +1,36 @@
+Scenario 7: elderly_patient
+Patient  : Dorothy Simmons, 78-year-old retired schoolteacher
+Goal     : Schedule an appointment while acting as a slow, occasionally confused elderly patient
+Date/Time: 20260623_233305
+============================================================
+
+[PGAI AGENT]:
+This call may be recorded for quality and training purposes. Para español, oprima el dos. Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with test?
+
+[PATIENT (bot)]:
+Slow down a bit, please. I'm having a bit of trouble hearing. You said something about Pretty Good AI, but then you asked if I'm with a test. Now where was I... Ah yes, I'm Dorothy Simmons, I have a scheduled appointment I think. Can you tell me, which doctor do I see at Pivot Point Orthopedics?
+
+[PGAI AGENT]:
+Dorothy, can you please provide your date of birth?
+
+[PATIENT (bot)]:
+My date of birth... That's in my file somewhere... Let me think for a moment. January 12th, 1944. Now where was I... Ah yes, my date of birth. Would you like to confirm my information in the system?
+
+[PGAI AGENT]:
+Just to confirm, I have your name as Dorothy Simmons and your date of birth as January 12, 1944. Is that correct?
+
+[PATIENT (bot)]:
+Yes, that's correct. You said my name, but you didn't mention the doctor yet. Can you tell me which doctor I'm supposed to see? I think it might be Dr. Johnson, or maybe Dr. Smith... I get those two mixed up sometimes. Can you repeat that back to me, please?
+
+[PGAI AGENT]:
+I'm having trouble pulling up your records right now, so I can't confirm your doctor. I'll connect you to our patient support team for help. Please stay on the line. Connecting you to a representative. Please wait. Please wait.
+
+[PATIENT (bot)]:
+Hold on just a minute... I'm still on the line, right? Don't worry about it, I'll just wait. This is a bit frustrating, though. I really need to get in to see someone about my knee. It's been bothering me a lot lately.  Hmm, I think I might have made an appointment before, but I'm not sure...
+
+[PGAI AGENT]:
+test line. Goodbye.
+
+[PATIENT (bot)]:
+Wait, I thought I was still on the line with the patient support team. I didn't get to talk to them. Can we start again, please? I really need some help figuring out who I'm supposed to see at Pivot Point Orthopedics.
+

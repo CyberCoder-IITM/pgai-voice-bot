@@ -20,6 +20,7 @@ import io
 import json
 import os
 import wave
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -169,12 +170,13 @@ async def stream_handler(websocket: WebSocket, scenario_id: str):
 
             # ── Groq LLM: patient response ────────────────────────────────────
             completion = groq_cl.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="llama-3.1-8b-instant",
                 messages=[{"role": "system", "content": sys_prompt}, *history],
                 max_tokens=120,
                 temperature=0.75,
             )
             patient_text = completion.choices[0].message.content.strip()
+            patient_text = re.sub(r'\*[^*]+\*', '', patient_text).strip()
             history.append({"role": "assistant", "content": patient_text})
             transcript.append({"speaker": "PATIENT (bot)", "text": patient_text})
             print(f"  PATIENT: {patient_text}")
